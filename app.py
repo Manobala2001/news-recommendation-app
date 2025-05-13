@@ -16,7 +16,7 @@ stemmer = PorterStemmer()
 @st.cache_data
 
 def load_data():
-    df = pd.read_csv("/content/english_news_dataset.csv")
+    df = pd.read_csv("english_news_dataset.csv")
     df.dropna(subset=['Content'], inplace=True)
     df['Content'] = df['Content'].astype(str)
     return df
