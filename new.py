@@ -56,6 +56,8 @@ def generate_summary(text):
     except:
         return text[:250]  # fallback to truncated content
 
+df=df.drop_duplicates(subset=['Content','Headline'])
+
 # Initialize session state
 if 'query_history' not in st.session_state:
     st.session_state.query_history = []
