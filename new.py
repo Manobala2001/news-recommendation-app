@@ -28,6 +28,8 @@ def load_data():
     df = pd.read_csv("english_news_dataset.csv")
     df.dropna(subset=['Content'], inplace=True)
     df['Content'] = df['Content'].astype(str)
+    df=df.drop_duplicates(subset=['Content','Headline'])
+    df=df.reset_index(drop=True)
     return df
 
 # Text preprocessing
@@ -57,6 +59,7 @@ def generate_summary(text):
         return text[:250]  # fallback to truncated content
 
 df=df.drop_duplicates(subset=['Content','Headline'])
+df=df.reset_index(drop=True)
 
 # Initialize session state
 if 'query_history' not in st.session_state:
